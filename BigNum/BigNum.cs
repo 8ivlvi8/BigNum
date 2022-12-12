@@ -26,6 +26,7 @@ namespace BigNum
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
         public char Compare(BigNum B1, BigNum B2)
+
         {
             // l: B1 less than B2
             // g: B1 greater than B2
