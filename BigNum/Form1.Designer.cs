@@ -28,37 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxBN1 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbBN1 = new System.Windows.Forms.TextBox();
+            this.tbBN2 = new System.Windows.Forms.TextBox();
+            this.tbKQ = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnCompare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBoxBN1
+            // tbBN1
             // 
-            this.textBoxBN1.Location = new System.Drawing.Point(97, 9);
-            this.textBoxBN1.Multiline = true;
-            this.textBoxBN1.Name = "textBoxBN1";
-            this.textBoxBN1.Size = new System.Drawing.Size(519, 45);
-            this.textBoxBN1.TabIndex = 0;
+            this.tbBN1.Location = new System.Drawing.Point(97, 9);
+            this.tbBN1.Multiline = true;
+            this.tbBN1.Name = "tbBN1";
+            this.tbBN1.Size = new System.Drawing.Size(519, 45);
+            this.tbBN1.TabIndex = 0;
             // 
-            // textBox1
+            // tbBN2
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 60);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(519, 45);
-            this.textBox1.TabIndex = 0;
+            this.tbBN2.Location = new System.Drawing.Point(97, 60);
+            this.tbBN2.Multiline = true;
+            this.tbBN2.Name = "tbBN2";
+            this.tbBN2.Size = new System.Drawing.Size(519, 45);
+            this.tbBN2.TabIndex = 0;
             // 
-            // textBox2
+            // tbKQ
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 111);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(519, 45);
-            this.textBox2.TabIndex = 0;
+            this.tbKQ.Location = new System.Drawing.Point(97, 111);
+            this.tbKQ.Multiline = true;
+            this.tbKQ.Name = "tbKQ";
+            this.tbKQ.Size = new System.Drawing.Size(519, 45);
+            this.tbKQ.TabIndex = 0;
             // 
             // label1
             // 
@@ -87,17 +88,28 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Kết quả";
             // 
+            // btnCompare
+            // 
+            this.btnCompare.Location = new System.Drawing.Point(44, 204);
+            this.btnCompare.Name = "btnCompare";
+            this.btnCompare.Size = new System.Drawing.Size(75, 23);
+            this.btnCompare.TabIndex = 2;
+            this.btnCompare.Text = "So sánh";
+            this.btnCompare.UseVisualStyleBackColor = true;
+            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 301);
+            this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBoxBN1);
+            this.Controls.Add(this.tbKQ);
+            this.Controls.Add(this.tbBN2);
+            this.Controls.Add(this.tbBN1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -107,11 +119,12 @@
 
         #endregion
 
-        private TextBox textBoxBN1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbBN1;
+        private TextBox tbBN2;
+        private TextBox tbKQ;
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button btnCompare;
     }
 }

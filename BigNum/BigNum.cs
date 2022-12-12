@@ -22,31 +22,41 @@ namespace BigNum
                 num = s;
                 sign = '+';
             }
+            if (num.Contains("-"))
+                MessageBox.Show("Nhập sai định dạng số");
         }
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
-        public char Compare(BigNum B1, BigNum B2)
+        public char Compare(BigNum BN)
 
         {
-            // l: B1 less than B2
-            // g: B1 greater than B2
-            // e: B1 equal to B2
-            if (B1.Sign == B2.Sign)
+            // l: less than BN
+            // g: greater than BN
+            // e: equal to BN
+            if (this.Sign == BN.Sign)
             {
-                if (B1.Num == B2.Num)
-                    return 'e';
-                else if (B1.Num.Length < B2.Num.Length)
+                if (this.Num.Length < BN.Num.Length)
                     return 'l';
-
+                else if (this.Num.Length > BN.Num.Length)
+                    return 'g';
+                else
+                {
+                    int b = this.Num.CompareTo(BN.Num);
+                    if (b == 0)
+                        return 'e';
+                    else if (b == 1)
+                        return 'g';
+                    else
+                        return 'l';
+                }
             }
             else
             {
-                if (B1.Sign == '+')
+                if (this.Sign == '+')
                     return 'g';
                 else
                     return 'l';
             }
-            return 'a';
         }
     }
 }
