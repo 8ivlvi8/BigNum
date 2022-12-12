@@ -58,5 +58,10 @@ namespace BigNum
                     return 'l';
             }
         }
+        public List<Int64> CutNum(BigNum BN)
+        {
+            List<Int64> cuted = new List<Int64>();
+            return cuted;
+        }
     }
 }

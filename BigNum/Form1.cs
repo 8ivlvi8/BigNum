@@ -19,5 +19,10 @@
             else
                 tbKQ.Text = "Số thứ nhất lớn hơn số thứ hai";
         }
+
+        private void btnAddition_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCompare = new System.Windows.Forms.Button();
+            this.btnAddition = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
@@ -98,11 +99,22 @@
             this.btnCompare.UseVisualStyleBackColor = true;
             this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
             // 
+            // btnAddition
+            // 
+            this.btnAddition.Location = new System.Drawing.Point(138, 204);
+            this.btnAddition.Name = "btnAddition";
+            this.btnAddition.Size = new System.Drawing.Size(75, 23);
+            this.btnAddition.TabIndex = 3;
+            this.btnAddition.Text = "Cộng";
+            this.btnAddition.UseVisualStyleBackColor = true;
+            this.btnAddition.Click += new System.EventHandler(this.btnAddition_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 301);
+            this.Controls.Add(this.btnAddition);
             this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -126,5 +138,6 @@
         private Label label2;
         private Label label3;
         private Button btnCompare;
+        private Button btnAddition;
     }
 }
