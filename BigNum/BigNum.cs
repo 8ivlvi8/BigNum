@@ -22,11 +22,13 @@ namespace BigNum
                 num = s;
                 sign = '+';
             }
-            if (num.Contains("-"))
-                MessageBox.Show("Nhập sai định dạng số");
+            //if (num.Contains("-"))
+            //    MessageBox.Show("Nhập sai định dạng số");
+            //num = num.Trim('0');
         }
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
+
         public char Compare(BigNum BN)
 
         {
@@ -82,6 +84,12 @@ namespace BigNum
                 s = "";
             }
             return cuted;
+        }
+        public BigNum Addition(BigNum BN1, BigNum BN2)
+        {
+            BigNum rs = new BigNum("0");
+
+            return rs;
         }
     }
 }
