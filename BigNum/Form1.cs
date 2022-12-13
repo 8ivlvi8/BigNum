@@ -26,6 +26,15 @@
                 return true;
             return false;
         }
+        private bool check_tb()
+        {
+            if (check_input(tbBN1.Text) == false/* || check_input(tbBN2.Text) == false*/)
+            {
+                MessageBox.Show("Kiểm tra đầu vào!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
         private void btnCompare_Click(object sender, EventArgs e)
         {
             BigNum B1 = new BigNum(tbBN1.Text);
@@ -38,18 +47,11 @@
             else
                 tbKQ.Text = "Số thứ nhất lớn hơn số thứ hai";
         }
-        private bool check_tb()
-        {
-            if (check_input(tbBN1.Text) == false || check_input(tbBN2.Text) == false)
-            {
-                MessageBox.Show("Kiểm tra đầu vào!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
         private void btnAddition_Click(object sender, EventArgs e)
         {
             tbBN2.Clear();
+            if (check_tb() == false)
+                return;
             BigNum B1 = new BigNum(tbBN1.Text);
             List<Int64> list = B1.CutNum(15);
             for (int i = 0; i < list.Count; i++)

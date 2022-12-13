@@ -22,13 +22,10 @@ namespace BigNum
                 num = s;
                 sign = '+';
             }
-            //if (num.Contains("-"))
-            //    MessageBox.Show("Nhập sai định dạng số");
-            //num = num.Trim('0');
+            num.Trim('0');
         }
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
-
         public char Compare(BigNum BN)
 
         {
@@ -85,9 +82,33 @@ namespace BigNum
             }
             return cuted;
         }
+        public void Swap(BigNum BN1, BigNum BN2)
+        {
+            BigNum temp = BN1;
+            BN1 = BN2;
+            BN2 = temp;
+        }
         public BigNum Addition(BigNum BN1, BigNum BN2)
         {
             BigNum rs = new BigNum("0");
+            if (BN1.Compare(BN2) == 'l')
+                Swap(BN1, BN2);
+            List<Int64> lstB1 = BN1.CutNum(15);
+            List<Int64> lstB2 = BN2.CutNum(15);
+            List<Int64> lstrs = new List<Int64>();
+            int len_lstB1 = lstB1.Count;
+            int len_lstB2 = lstB2.Count;
+            Int64 x = 0, y = 0;
+            lstB1.Insert(0, x);
+            for (int i = 0; i < len_lstB1 - len_lstB2; i++)
+                lstB2.Insert(0, x);
+            for (int i = len_lstB1 - 1; i >= 0; i++)
+            {
+                x = lstB1[i] + lstB2[i] + y;
+                y = x / 1000000000000000;
+                x %= 1000000000000000;
+                lstrs.Insert(0, x);
+            }
 
             return rs;
         }
