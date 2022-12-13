@@ -58,9 +58,29 @@ namespace BigNum
                     return 'l';
             }
         }
-        public List<Int64> CutNum(BigNum BN)
+        public List<Int64> CutNum(int n)
         {
             List<Int64> cuted = new List<Int64>();
+            int len = num.Length;
+            int k = len % n;
+            int t = len / n;
+            string s = "";
+            if (k != 0)
+            {
+                for (int i = 0; i < k; i++)
+                    s += num[i];
+                cuted.Add(Int64.Parse(s));
+                s = "";
+            }
+            for (int i = 0; i < t; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    s += num[i * n + j + k];
+                }
+                cuted.Add(Int64.Parse(s));
+                s = "";
+            }
             return cuted;
         }
     }

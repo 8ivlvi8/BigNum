@@ -10,7 +10,7 @@
         private void btnCompare_Click(object sender, EventArgs e)
         {
             BigNum B1 = new BigNum(tbBN1.Text);
-            BigNum B2= new BigNum(tbBN2.Text);
+            BigNum B2 = new BigNum(tbBN2.Text);
             char kq = B1.Compare(B2);
             if (kq == 'l')
                 tbKQ.Text = "Số thứ nhất bé hơn số thứ hai";
@@ -22,7 +22,14 @@
 
         private void btnAddition_Click(object sender, EventArgs e)
         {
+            tbBN2.Clear();
+            BigNum B1 = new BigNum(tbBN1.Text);
+            List<Int64> list = B1.CutNum(15);
+            for (int i = 0; i < list.Count; i++)
+            {
+                tbBN2.Text += list[i].ToString()+' ';
 
+            }
         }
     }
 }
