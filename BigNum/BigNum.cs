@@ -22,7 +22,6 @@ namespace BigNum
                 num = s;
                 sign = '+';
             }
-            num.Trim('0');
         }
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
@@ -126,6 +125,30 @@ namespace BigNum
                 s += Add_num_0(15, lstrs[i]);
             BigNum rs = new BigNum(s);
             return rs;
+        }
+        public BigNum Subtraction(BigNum BN)
+        {
+            if (this.Compare(BN) == 'e')
+                return (new BigNum("0"));
+            else if (this.Compare(BN) == 'l')
+                Swap(this, BN);
+            List<Int64> lstB1 = this.CutNum(15);
+            List<Int64> lstB2 = BN.CutNum(15);
+            List<Int64> lstrs = new List<Int64>();
+            int len_lstB1 = lstB1.Count;
+            for (int i = len_lstB1 - 1; i >= 0; i--)
+            {
+                if (lstB1[i] < lstB2[i])
+                {
+                    lstB1[i - 1] -= 1;
+                    lstB1[i] += 1000000000000000;
+                }
+                    lstrs.Insert(0, lstB1[i] - lstB2[i]);
+            }
+            string s = "";
+            for (int i = 0; i < lstrs.Count; i++)
+                s += Add_num_0(15, lstrs[i]);
+            return new BigNum(s);
         }
     }
 }

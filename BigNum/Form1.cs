@@ -28,7 +28,8 @@
         }
         private bool check_tb()
         {
-            if (check_input(tbBN1.Text) == false/* || check_input(tbBN2.Text) == false*/)
+            tbRs.Clear();
+            if (check_input(tbBN1.Text) == false || check_input(tbBN2.Text) == false)
             {
                 MessageBox.Show("Kiểm tra đầu vào!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -49,13 +50,23 @@
         }
         private void btnAddition_Click(object sender, EventArgs e)
         {
-            tbRs.Clear();
             if (check_tb() == false)
                 return;
             BigNum B1 = new BigNum(tbBN1.Text);
             BigNum B2 = new BigNum(tbBN2.Text);
-            BigNum Rs= B1.Addition(B2);
+            BigNum Rs = B1.Addition(B2);
             tbRs.Text = Rs.Show();
+        }
+
+        private void btnSubtraction_Click(object sender, EventArgs e)
+        {
+            if (check_tb() == false)
+                return;
+            BigNum B1 = new BigNum(tbBN1.Text);
+            BigNum B2 = new BigNum(tbBN2.Text);
+            BigNum Rs = B1.Subtraction(B2);
+            tbRs.Text = Rs.Show();
+
         }
     }
 }

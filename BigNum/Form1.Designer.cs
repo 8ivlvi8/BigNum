@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCompare = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
+            this.btnSubtraction = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
@@ -108,11 +109,22 @@
             this.btnAddition.UseVisualStyleBackColor = true;
             this.btnAddition.Click += new System.EventHandler(this.btnAddition_Click);
             // 
+            // btnSubtraction
+            // 
+            this.btnSubtraction.Location = new System.Drawing.Point(231, 204);
+            this.btnSubtraction.Name = "btnSubtraction";
+            this.btnSubtraction.Size = new System.Drawing.Size(75, 23);
+            this.btnSubtraction.TabIndex = 4;
+            this.btnSubtraction.Text = "Trừ";
+            this.btnSubtraction.UseVisualStyleBackColor = true;
+            this.btnSubtraction.Click += new System.EventHandler(this.btnSubtraction_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 301);
+            this.Controls.Add(this.btnSubtraction);
             this.Controls.Add(this.btnAddition);
             this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.label3);
@@ -138,5 +150,6 @@
         private Label label3;
         private Button btnCompare;
         private Button btnAddition;
+        private Button btnSubtraction;
     }
 }
