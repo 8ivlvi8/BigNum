@@ -26,6 +26,10 @@ namespace BigNum
         }
         public char Sign { get => sign; set => sign = value; }
         public string Num { get => num; set => num = value; }
+        public string Show()
+        {
+            return ((sign == '-') ? "-" : "") + num.Trim('0');
+        }
         public char Compare(BigNum BN)
 
         {
@@ -82,34 +86,45 @@ namespace BigNum
             }
             return cuted;
         }
+        public string Add_num_0(int n, Int64 num_in_list)
+        {
+            string s = num_in_list.ToString();
+            for (int i = 0; i < n - s.Length; i++)
+            {
+                s = '0' + s;
+            }
+            return s;
+        }
         public void Swap(BigNum BN1, BigNum BN2)
         {
             BigNum temp = BN1;
             BN1 = BN2;
             BN2 = temp;
         }
-        public BigNum Addition(BigNum BN1, BigNum BN2)
+        public BigNum Addition(BigNum BN)
         {
-            BigNum rs = new BigNum("0");
-            if (BN1.Compare(BN2) == 'l')
-                Swap(BN1, BN2);
-            List<Int64> lstB1 = BN1.CutNum(15);
-            List<Int64> lstB2 = BN2.CutNum(15);
+            if (this.Compare(BN) == 'l')
+                Swap(this, BN);
+            List<Int64> lstB1 = this.CutNum(15);
+            List<Int64> lstB2 = BN.CutNum(15);
             List<Int64> lstrs = new List<Int64>();
-            int len_lstB1 = lstB1.Count;
-            int len_lstB2 = lstB2.Count;
             Int64 x = 0, y = 0;
             lstB1.Insert(0, x);
+            int len_lstB1 = lstB1.Count;
+            int len_lstB2 = lstB2.Count;
             for (int i = 0; i < len_lstB1 - len_lstB2; i++)
                 lstB2.Insert(0, x);
-            for (int i = len_lstB1 - 1; i >= 0; i++)
+            for (int i = len_lstB1 - 1; i >= 0; i--)
             {
                 x = lstB1[i] + lstB2[i] + y;
                 y = x / 1000000000000000;
                 x %= 1000000000000000;
                 lstrs.Insert(0, x);
             }
-
+            string s = "";
+            for (int i = 0; i < lstrs.Count; i++)
+                s += Add_num_0(15, lstrs[i]);
+            BigNum rs = new BigNum(s);
             return rs;
         }
     }

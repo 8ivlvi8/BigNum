@@ -29,7 +29,7 @@
         {
             this.tbBN1 = new System.Windows.Forms.TextBox();
             this.tbBN2 = new System.Windows.Forms.TextBox();
-            this.tbKQ = new System.Windows.Forms.TextBox();
+            this.tbRs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,13 +53,13 @@
             this.tbBN2.Size = new System.Drawing.Size(519, 45);
             this.tbBN2.TabIndex = 0;
             // 
-            // tbKQ
+            // tbRs
             // 
-            this.tbKQ.Location = new System.Drawing.Point(97, 111);
-            this.tbKQ.Multiline = true;
-            this.tbKQ.Name = "tbKQ";
-            this.tbKQ.Size = new System.Drawing.Size(519, 45);
-            this.tbKQ.TabIndex = 0;
+            this.tbRs.Location = new System.Drawing.Point(97, 111);
+            this.tbRs.Multiline = true;
+            this.tbRs.Name = "tbRs";
+            this.tbRs.Size = new System.Drawing.Size(519, 45);
+            this.tbRs.TabIndex = 0;
             // 
             // label1
             // 
@@ -118,7 +118,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbKQ);
+            this.Controls.Add(this.tbRs);
             this.Controls.Add(this.tbBN2);
             this.Controls.Add(this.tbBN1);
             this.Name = "Form1";
@@ -132,7 +132,7 @@
 
         private TextBox tbBN1;
         private TextBox tbBN2;
-        private TextBox tbKQ;
+        private TextBox tbRs;
         private Label label1;
         private Label label2;
         private Label label3;

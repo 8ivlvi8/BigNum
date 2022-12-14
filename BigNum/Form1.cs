@@ -41,24 +41,21 @@
             BigNum B2 = new BigNum(tbBN2.Text);
             char kq = B1.Compare(B2);
             if (kq == 'l')
-                tbKQ.Text = "Số thứ nhất bé hơn số thứ hai";
+                tbRs.Text = "Số thứ nhất bé hơn số thứ hai";
             else if (kq == 'e')
-                tbKQ.Text = "Số thứ nhất bằng số thứ hai";
+                tbRs.Text = "Số thứ nhất bằng số thứ hai";
             else
-                tbKQ.Text = "Số thứ nhất lớn hơn số thứ hai";
+                tbRs.Text = "Số thứ nhất lớn hơn số thứ hai";
         }
         private void btnAddition_Click(object sender, EventArgs e)
         {
-            tbBN2.Clear();
+            tbRs.Clear();
             if (check_tb() == false)
                 return;
             BigNum B1 = new BigNum(tbBN1.Text);
-            List<Int64> list = B1.CutNum(15);
-            for (int i = 0; i < list.Count; i++)
-            {
-                tbBN2.Text += list[i].ToString() + ' ';
-
-            }
+            BigNum B2 = new BigNum(tbBN2.Text);
+            BigNum Rs= B1.Addition(B2);
+            tbRs.Text = Rs.Show();
         }
     }
 }
