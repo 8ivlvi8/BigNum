@@ -54,7 +54,8 @@
                 return;
             BigNum B1 = new BigNum(tbBN1.Text);
             BigNum B2 = new BigNum(tbBN2.Text);
-            BigNum Rs = B1.Addition(B2);
+            BigNum Rs = new BigNum("0");
+            Rs = Rs.Addition(B1, B2);
             tbRs.Text = Rs.Show();
         }
 
@@ -64,7 +65,8 @@
                 return;
             BigNum B1 = new BigNum(tbBN1.Text);
             BigNum B2 = new BigNum(tbBN2.Text);
-            BigNum Rs = B1.Subtraction(B2);
+            BigNum Rs = new BigNum("0");
+            Rs = Rs.Subtraction(B1, B2);
             tbRs.Text = Rs.Show();
 
         }

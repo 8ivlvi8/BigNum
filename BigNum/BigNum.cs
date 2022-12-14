@@ -27,7 +27,21 @@ namespace BigNum
         public string Num { get => num; set => num = value; }
         public string Show()
         {
-            return ((sign == '-') ? "-" : "") + num.Trim('0');
+            return ((sign == '-') ? "-" : "") + num.TrimStart('0');
+        }
+        public BigNum Opposite()
+        {
+            if (sign == '-')
+                sign = '+';
+            else
+                sign = '-';
+            return this;
+        }
+        public BigNum Abs()
+        {
+            if (Sign == '-')
+                Sign = '+';
+            return this;
         }
         public char Compare(BigNum BN)
 
@@ -35,30 +49,39 @@ namespace BigNum
             // l: less than BN
             // g: greater than BN
             // e: equal to BN
+            char rs;
             if (this.Sign == BN.Sign)
             {
                 if (this.Num.Length < BN.Num.Length)
-                    return 'l';
+                    rs = 'l';
                 else if (this.Num.Length > BN.Num.Length)
-                    return 'g';
+                    rs = 'g';
                 else
                 {
                     int b = this.Num.CompareTo(BN.Num);
                     if (b == 0)
-                        return 'e';
+                        rs = 'e';
                     else if (b == 1)
-                        return 'g';
+                        rs = 'g';
                     else
-                        return 'l';
+                        rs = 'l';
+                }
+                if (this.Sign == '-')
+                {
+                    if (rs == 'g')
+                        rs = 'l';
+                    else if (rs == 'l')
+                        rs = 'g';
                 }
             }
             else
             {
                 if (this.Sign == '+')
-                    return 'g';
+                    rs = 'g';
                 else
-                    return 'l';
+                    rs = 'l';
             }
+            return rs;
         }
         public List<Int64> CutNum(int n)
         {
@@ -94,18 +117,19 @@ namespace BigNum
             }
             return s;
         }
-        public void Swap(BigNum BN1, BigNum BN2)
+        public void Swap(ref BigNum BN1, ref BigNum BN2)
         {
             BigNum temp = BN1;
             BN1 = BN2;
             BN2 = temp;
+            return;
         }
-        public BigNum Addition(BigNum BN)
+        public BigNum Addition(BigNum BN1, BigNum BN2)
         {
-            if (this.Compare(BN) == 'l')
-                Swap(this, BN);
-            List<Int64> lstB1 = this.CutNum(15);
-            List<Int64> lstB2 = BN.CutNum(15);
+            if (BN1.Compare(BN2) == 'l')
+                Swap(ref BN1, ref BN2);
+            List<Int64> lstB1 = BN1.CutNum(15);
+            List<Int64> lstB2 = BN2.CutNum(15);
             List<Int64> lstrs = new List<Int64>();
             Int64 x = 0, y = 0;
             lstB1.Insert(0, x);
@@ -125,14 +149,14 @@ namespace BigNum
                 s += Add_num_0(15, lstrs[i]);
             return new BigNum(s);
         }
-        public BigNum Subtraction(BigNum BN)
+        public BigNum Subtraction(BigNum BN1, BigNum BN2)
         {
-            if (this.Compare(BN) == 'e')
+            if (BN1.Compare(BN2) == 'e')
                 return new BigNum("0");
-            else if (this.Compare(BN) == 'l')
-                Swap(this, BN);
-            List<Int64> lstB1 = this.CutNum(15);
-            List<Int64> lstB2 = BN.CutNum(15);
+            else if (BN1.Abs().Compare(BN2.Abs()) == 'l')
+                Swap(ref BN1, ref BN2);
+            List<Int64> lstB1 = BN1.CutNum(15);
+            List<Int64> lstB2 = BN2.CutNum(15);
             List<Int64> lstrs = new List<Int64>();
             int len_lstB1 = lstB1.Count;
             int len_lstB2 = lstB2.Count;
@@ -145,7 +169,7 @@ namespace BigNum
                     lstB1[i - 1] -= 1;
                     lstB1[i] += 1000000000000000;
                 }
-                    lstrs.Insert(0, lstB1[i] - lstB2[i]);
+                lstrs.Insert(0, lstB1[i] - lstB2[i]);
             }
             string s = "";
             for (int i = 0; i < lstrs.Count; i++)
