@@ -123,19 +123,21 @@ namespace BigNum
             string s = "";
             for (int i = 0; i < lstrs.Count; i++)
                 s += Add_num_0(15, lstrs[i]);
-            BigNum rs = new BigNum(s);
-            return rs;
+            return new BigNum(s);
         }
         public BigNum Subtraction(BigNum BN)
         {
             if (this.Compare(BN) == 'e')
-                return (new BigNum("0"));
+                return new BigNum("0");
             else if (this.Compare(BN) == 'l')
                 Swap(this, BN);
             List<Int64> lstB1 = this.CutNum(15);
             List<Int64> lstB2 = BN.CutNum(15);
             List<Int64> lstrs = new List<Int64>();
             int len_lstB1 = lstB1.Count;
+            int len_lstB2 = lstB2.Count;
+            for (int i = 0; i < len_lstB1 - len_lstB2; i++)
+                lstB2.Insert(0, 0);
             for (int i = len_lstB1 - 1; i >= 0; i--)
             {
                 if (lstB1[i] < lstB2[i])
