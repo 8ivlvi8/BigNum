@@ -38,9 +38,9 @@
         }
         private void btnCompare_Click(object sender, EventArgs e)
         {
-            BigNum B1 = new BigNum(tbBN1.Text);
-            BigNum B2 = new BigNum(tbBN2.Text);
-            char kq = B1.Compare(B2);
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            BigNum BN2 = new BigNum(tbBN2.Text);
+            char kq = BN1.Compare(BN2);
             if (kq == 'l')
                 tbRs.Text = "Số thứ nhất bé hơn số thứ hai";
             else if (kq == 'e')
@@ -52,23 +52,45 @@
         {
             if (check_tb() == false)
                 return;
-            BigNum B1 = new BigNum(tbBN1.Text);
-            BigNum B2 = new BigNum(tbBN2.Text);
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Rs = new BigNum("0");
-            Rs = Rs.Addition(B1, B2);
-            tbRs.Text = Rs.Show();
+            if (BN1.Sign == BN2.Sign)
+            {
+                Rs = Rs.Addition(BN1, BN2);
+                Rs.Sign = BN1.Sign;
+            }
+            else
+            {
+                Rs = Rs.Subtraction(BN1, BN2);
+                if (BN1.Abs().Compare(BN2.Abs()) == 'l')
+                    Rs.Sign = BN2.Sign;
+                else
+                    Rs.Sign = BN1.Sign;
+            }
+            tbRs.Text = (Rs.Show() == "") ? "0" : Rs.Show();
         }
-
         private void btnSubtraction_Click(object sender, EventArgs e)
         {
             if (check_tb() == false)
                 return;
-            BigNum B1 = new BigNum(tbBN1.Text);
-            BigNum B2 = new BigNum(tbBN2.Text);
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Rs = new BigNum("0");
-            Rs = Rs.Subtraction(B1, B2);
-            tbRs.Text = Rs.Show();
-
+            if (BN1.Sign != BN2.Sign)
+            {
+                Rs = Rs.Addition(BN1, BN2);
+                Rs.Sign = BN1.Sign;
+            }
+            else
+            {
+                Rs = Rs.Subtraction(BN1, BN2);
+                if (BN1.Abs().Compare(BN2.Abs()) == 'l')
+                    Rs.Sign = BN1.Opposite().Sign;
+                else
+                    Rs.Sign = BN1.Sign;
+            }
+            tbRs.Text = (Rs.Show() == "") ? "0" : Rs.Show();
         }
     }
 }
