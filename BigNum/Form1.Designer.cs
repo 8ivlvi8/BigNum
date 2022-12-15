@@ -36,6 +36,7 @@
             this.btnCompare = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
             this.btnSubtraction = new System.Windows.Forms.Button();
+            this.btnMultiplication = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
@@ -91,7 +92,7 @@
             // 
             // btnCompare
             // 
-            this.btnCompare.Location = new System.Drawing.Point(44, 204);
+            this.btnCompare.Location = new System.Drawing.Point(27, 186);
             this.btnCompare.Name = "btnCompare";
             this.btnCompare.Size = new System.Drawing.Size(75, 23);
             this.btnCompare.TabIndex = 2;
@@ -101,7 +102,7 @@
             // 
             // btnAddition
             // 
-            this.btnAddition.Location = new System.Drawing.Point(138, 204);
+            this.btnAddition.Location = new System.Drawing.Point(108, 186);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(75, 23);
             this.btnAddition.TabIndex = 3;
@@ -111,7 +112,7 @@
             // 
             // btnSubtraction
             // 
-            this.btnSubtraction.Location = new System.Drawing.Point(231, 204);
+            this.btnSubtraction.Location = new System.Drawing.Point(189, 186);
             this.btnSubtraction.Name = "btnSubtraction";
             this.btnSubtraction.Size = new System.Drawing.Size(75, 23);
             this.btnSubtraction.TabIndex = 4;
@@ -119,11 +120,22 @@
             this.btnSubtraction.UseVisualStyleBackColor = true;
             this.btnSubtraction.Click += new System.EventHandler(this.btnSubtraction_Click);
             // 
+            // btnMultiplication
+            // 
+            this.btnMultiplication.Location = new System.Drawing.Point(270, 186);
+            this.btnMultiplication.Name = "btnMultiplication";
+            this.btnMultiplication.Size = new System.Drawing.Size(75, 23);
+            this.btnMultiplication.TabIndex = 5;
+            this.btnMultiplication.Text = "Nhân";
+            this.btnMultiplication.UseVisualStyleBackColor = true;
+            this.btnMultiplication.Click += new System.EventHandler(this.btnMultiplication_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 301);
+            this.ClientSize = new System.Drawing.Size(648, 236);
+            this.Controls.Add(this.btnMultiplication);
             this.Controls.Add(this.btnSubtraction);
             this.Controls.Add(this.btnAddition);
             this.Controls.Add(this.btnCompare);
@@ -152,5 +164,6 @@
         private Button btnCompare;
         private Button btnAddition;
         private Button btnSubtraction;
+        private Button btnMultiplication;
     }
 }

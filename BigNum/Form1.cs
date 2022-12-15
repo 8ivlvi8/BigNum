@@ -68,7 +68,7 @@
                 else if (BN1.Abs().Compare(BN2.Abs()) == 'g')
                     Rs.Sign = BN1.Sign;
             }
-            tbRs.Text = (Rs.Show() == "") ? "0" : Rs.Show();
+            tbRs.Text = Rs.Show();
         }
         private void btnSubtraction_Click(object sender, EventArgs e)
         {
@@ -90,7 +90,18 @@
                 else
                     Rs.Sign = BN1.Sign;
             }
-            tbRs.Text = (Rs.Show() == ""||Rs.Show() == "-") ? "0" : Rs.Show();
+            tbRs.Text = Rs.Show();
+        }
+
+        private void btnMultiplication_Click(object sender, EventArgs e)
+        {
+            if (check_tb() == false)
+                return;
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            BigNum BN2 = new BigNum(tbBN2.Text);
+            BigNum Rs = new BigNum("0");
+            Rs = Rs.Multiplication_BN_BN(BN1.Abs(), BN2.Abs());
+            tbRs.Text = Rs.Show();
         }
     }
 }
