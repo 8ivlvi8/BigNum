@@ -65,7 +65,7 @@
                 Rs = Rs.Subtraction(BN1, BN2);
                 if (BN1.Abs().Compare(BN2.Abs()) == 'l')
                     Rs.Sign = BN2.Sign;
-                else
+                else if (BN1.Abs().Compare(BN2.Abs()) == 'g')
                     Rs.Sign = BN1.Sign;
             }
             tbRs.Text = (Rs.Show() == "") ? "0" : Rs.Show();
@@ -90,7 +90,7 @@
                 else
                     Rs.Sign = BN1.Sign;
             }
-            tbRs.Text = (Rs.Show() == "") ? "0" : Rs.Show();
+            tbRs.Text = (Rs.Show() == ""||Rs.Show() == "-") ? "0" : Rs.Show();
         }
     }
 }

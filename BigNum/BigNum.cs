@@ -31,17 +31,19 @@ namespace BigNum
         }
         public BigNum Opposite()
         {
-            if (sign == '-')
-                sign = '+';
+            BigNum rs = new BigNum(this.Num);
+            if (Sign == '-')
+                rs.sign = '+';
             else
-                sign = '-';
-            return this;
+                rs.sign = '-';
+            return rs;
         }
         public BigNum Abs()
         {
-            if (Sign == '-')
-                Sign = '+';
-            return this;
+            BigNum rs = new BigNum(this.Num);
+            if (rs.Sign == '-')
+                rs.Sign = '+';
+            return rs;
         }
         public char Compare(BigNum BN)
 
