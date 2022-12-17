@@ -101,6 +101,10 @@
             BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Rs = new BigNum("0");
             Rs = Rs.Multiplication_BN_BN(BN1.Abs(), BN2.Abs());
+            if (BN1.Sign != BN2.Sign)
+                Rs.Sign = '-';
+            else
+                Rs.Sign = '+';
             tbRs.Text = Rs.Show();
         }
     }

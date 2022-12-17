@@ -113,6 +113,8 @@ namespace BigNum
             }
             return cuted;
         }
+        
+        // Thêm số 0 vào location, trả về đúng n ký tự
         public string Add_num_0(int n, string s, string location)
         {
             int len = s.Length;
@@ -121,6 +123,18 @@ namespace BigNum
                     s = '0' + s;
             if (location == "end")
                 for (int i = 0; i < n - len; i++)
+                    s += '0';
+            return s;
+        }
+
+        // Thêm n số 0 vào location
+        public string Add_num_0( string s, string location, int n)
+        {
+            if (location == "begin")
+                for (int i = 0; i < n; i++)
+                    s = '0' + s;
+            if (location == "end")
+                for (int i = 0; i < n; i++)
                     s += '0';
             return s;
         }
@@ -183,16 +197,14 @@ namespace BigNum
                 s += Add_num_0(15, lstrs[i].ToString(), "begin");
             return new BigNum(s);
         }
-        public BigNum Multiplication_BN_Int64(BigNum BN1, Int64 n)
+        public BigNum Multiplication_BN_Int64(BigNum BN, Int64 n)
         {
-            List<Int64> lst = new List<Int64>();
+            List<Int64> lst = BN.CutNum(8);
             string s = "";
-            lst = BN1.CutNum(8);
-            lst.Insert(0, 0);
             lst.Insert(0, 0);
             int len = lst.Count;
             Int64 x = 0;
-            for (int i = len - 1; i >= 0; i--)
+            for (int i = 0; i < len; i++)
                 lst[i] *= n;
             for (int i = len - 1; i >= 0; i--)
             {
@@ -211,16 +223,16 @@ namespace BigNum
             List<Int64> lstBN2 = BN2.CutNum(8);
             List<BigNum> lstBN = new List<BigNum>();
             BigNum Rs = new BigNum("0");
-            int len = lstBN2.Count;
+                int len = lstBN2.Count;
             for (int i = 0; i < len; i++)
                 lstBN.Add(Multiplication_BN_Int64(BN1, lstBN2[i]));
             len = lstBN.Count;
             for (int i = 0; i < len; i++)
             {
-                Rs = Addition(Rs, new BigNum(Add_num_0(8*(len-i), lstBN[i].Num, "end")));
-
+                BigNum temp = new BigNum(Add_num_0( lstBN[i].Num, "end", 8 * (len - i - 1)));
+                MessageBox.Show(temp.Show());
+                Rs = Addition(Rs, temp);
             }
-            Rs.Num = Rs.num.TrimStart('0');
             return Rs;
         }
     }
