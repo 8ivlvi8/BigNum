@@ -37,62 +37,71 @@
             this.btnAddition = new System.Windows.Forms.Button();
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnMultiplication = new System.Windows.Forms.Button();
+            this.btn_Division = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
             // 
-            this.tbBN1.Location = new System.Drawing.Point(97, 9);
+            this.tbBN1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBN1.Location = new System.Drawing.Point(125, 12);
             this.tbBN1.Multiline = true;
             this.tbBN1.Name = "tbBN1";
-            this.tbBN1.Size = new System.Drawing.Size(519, 45);
+            this.tbBN1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbBN1.Size = new System.Drawing.Size(519, 86);
             this.tbBN1.TabIndex = 0;
             // 
             // tbBN2
             // 
-            this.tbBN2.Location = new System.Drawing.Point(97, 60);
+            this.tbBN2.Location = new System.Drawing.Point(125, 104);
             this.tbBN2.Multiline = true;
             this.tbBN2.Name = "tbBN2";
-            this.tbBN2.Size = new System.Drawing.Size(519, 45);
+            this.tbBN2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbBN2.Size = new System.Drawing.Size(519, 86);
             this.tbBN2.TabIndex = 0;
             // 
             // tbRs
             // 
-            this.tbRs.Location = new System.Drawing.Point(97, 111);
+            this.tbRs.Location = new System.Drawing.Point(125, 196);
             this.tbRs.Multiline = true;
             this.tbRs.Name = "tbRs";
-            this.tbRs.Size = new System.Drawing.Size(519, 45);
+            this.tbRs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRs.Size = new System.Drawing.Size(519, 86);
             this.tbRs.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 23);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(9, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.Size = new System.Drawing.Size(92, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Số thứ nhất";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 74);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(17, 133);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 15);
+            this.label2.Size = new System.Drawing.Size(82, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Số thứ hai";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 126);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(30, 227);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 15);
+            this.label3.Size = new System.Drawing.Size(62, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Kết quả";
             // 
             // btnCompare
             // 
-            this.btnCompare.Location = new System.Drawing.Point(27, 186);
+            this.btnCompare.Location = new System.Drawing.Point(28, 295);
             this.btnCompare.Name = "btnCompare";
             this.btnCompare.Size = new System.Drawing.Size(75, 23);
             this.btnCompare.TabIndex = 2;
@@ -102,7 +111,7 @@
             // 
             // btnAddition
             // 
-            this.btnAddition.Location = new System.Drawing.Point(108, 186);
+            this.btnAddition.Location = new System.Drawing.Point(109, 295);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(75, 23);
             this.btnAddition.TabIndex = 3;
@@ -112,7 +121,7 @@
             // 
             // btnSubtraction
             // 
-            this.btnSubtraction.Location = new System.Drawing.Point(189, 186);
+            this.btnSubtraction.Location = new System.Drawing.Point(190, 295);
             this.btnSubtraction.Name = "btnSubtraction";
             this.btnSubtraction.Size = new System.Drawing.Size(75, 23);
             this.btnSubtraction.TabIndex = 4;
@@ -122,7 +131,7 @@
             // 
             // btnMultiplication
             // 
-            this.btnMultiplication.Location = new System.Drawing.Point(270, 186);
+            this.btnMultiplication.Location = new System.Drawing.Point(271, 295);
             this.btnMultiplication.Name = "btnMultiplication";
             this.btnMultiplication.Size = new System.Drawing.Size(75, 23);
             this.btnMultiplication.TabIndex = 5;
@@ -130,11 +139,22 @@
             this.btnMultiplication.UseVisualStyleBackColor = true;
             this.btnMultiplication.Click += new System.EventHandler(this.btnMultiplication_Click);
             // 
+            // btn_Division
+            // 
+            this.btn_Division.Location = new System.Drawing.Point(352, 295);
+            this.btn_Division.Name = "btn_Division";
+            this.btn_Division.Size = new System.Drawing.Size(75, 23);
+            this.btn_Division.TabIndex = 5;
+            this.btn_Division.Text = "Chia";
+            this.btn_Division.UseVisualStyleBackColor = true;
+            this.btn_Division.Click += new System.EventHandler(this.btn_Division_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 236);
+            this.ClientSize = new System.Drawing.Size(656, 329);
+            this.Controls.Add(this.btn_Division);
             this.Controls.Add(this.btnMultiplication);
             this.Controls.Add(this.btnSubtraction);
             this.Controls.Add(this.btnAddition);
@@ -165,5 +185,6 @@
         private Button btnAddition;
         private Button btnSubtraction;
         private Button btnMultiplication;
+        private Button btn_Division;
     }
 }

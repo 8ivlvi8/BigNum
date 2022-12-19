@@ -92,7 +92,6 @@
             }
             tbRs.Text = Rs.Show();
         }
-
         private void btnMultiplication_Click(object sender, EventArgs e)
         {
             if (check_tb() == false)
@@ -101,6 +100,21 @@
             BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Rs = new BigNum("0");
             Rs = Rs.Multiplication_BN_BN(BN1.Abs(), BN2.Abs());
+            if (BN1.Sign != BN2.Sign)
+                Rs.Sign = '-';
+            else
+                Rs.Sign = '+';
+            tbRs.Text = Rs.Show();
+        }
+
+        private void btn_Division_Click(object sender, EventArgs e)
+        {
+            if (check_tb() == false)
+                return;
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            BigNum BN2 = new BigNum(tbBN2.Text);
+            BigNum Rs = new BigNum("0");
+            Rs = Rs.Division(BN1.Abs(), BN2.Abs());
             if (BN1.Sign != BN2.Sign)
                 Rs.Sign = '-';
             else
