@@ -114,12 +114,25 @@
             BigNum BN1 = new BigNum(tbBN1.Text);
             BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Rs = new BigNum("0");
-            Rs = Rs.Division(BN1.Abs(), BN2.Abs());
+            Rs = Rs.Division(BN1.Abs(), BN2.Abs(), 0);
             if (BN1.Sign != BN2.Sign)
                 Rs.Sign = '-';
             else
                 Rs.Sign = '+';
             tbRs.Text = Rs.Show();
+        }
+
+        private void btnPow_Click(object sender, EventArgs e)
+        {
+            if (check_tb() == false)
+                return;
+            BigNum BN1 = new BigNum(tbBN1.Text);
+            Int64 BN2 = Int64.Parse(tbBN2.Text);
+            BigNum Rs = new BigNum("1");
+            Rs = Rs.Pow(BN1, BN2);
+            Rs.Sign = BN1.Sign;
+            tbRs.Text = Rs.Show();
+
         }
     }
 }

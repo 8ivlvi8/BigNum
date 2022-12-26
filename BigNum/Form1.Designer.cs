@@ -38,6 +38,7 @@
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnMultiplication = new System.Windows.Forms.Button();
             this.btn_Division = new System.Windows.Forms.Button();
+            this.btnPow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
@@ -149,11 +150,22 @@
             this.btn_Division.UseVisualStyleBackColor = true;
             this.btn_Division.Click += new System.EventHandler(this.btn_Division_Click);
             // 
+            // btnPow
+            // 
+            this.btnPow.Location = new System.Drawing.Point(433, 295);
+            this.btnPow.Name = "btnPow";
+            this.btnPow.Size = new System.Drawing.Size(75, 23);
+            this.btnPow.TabIndex = 5;
+            this.btnPow.Text = "Lũy thừa";
+            this.btnPow.UseVisualStyleBackColor = true;
+            this.btnPow.Click += new System.EventHandler(this.btnPow_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 329);
+            this.ClientSize = new System.Drawing.Size(656, 364);
+            this.Controls.Add(this.btnPow);
             this.Controls.Add(this.btn_Division);
             this.Controls.Add(this.btnMultiplication);
             this.Controls.Add(this.btnSubtraction);
@@ -186,5 +198,6 @@
         private Button btnSubtraction;
         private Button btnMultiplication;
         private Button btn_Division;
+        private Button btnPow;
     }
 }

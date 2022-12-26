@@ -14,7 +14,7 @@ namespace BigNum
         public string Num { get => num; set => num = value; }
         public BigNum(string s)
         {
-            if (s[0] == '-')
+            if (s.Length > 1 && s[0] == '-')
             {
                 num = s.Remove(0, 1);
                 sign = '-';
@@ -34,19 +34,19 @@ namespace BigNum
         }
         public BigNum Opposite()
         {
-            BigNum rs = new BigNum(this.Num);
+            BigNum Result = new BigNum(this.Num);
             if (Sign == '-')
-                rs.sign = '+';
+                Result.sign = '+';
             else
-                rs.sign = '-';
-            return rs;
+                Result.sign = '-';
+            return Result;
         }
         public BigNum Abs()
         {
-            BigNum rs = new BigNum(this.Num);
-            if (rs.Sign == '-')
-                rs.Sign = '+';
-            return rs;
+            BigNum Result = new BigNum(this.Num);
+            if (Result.Sign == '-')
+                Result.Sign = '+';
+            return Result;
         }
         public char Compare(BigNum BN)
 
@@ -54,39 +54,39 @@ namespace BigNum
             // l: less than BN
             // g: greater than BN
             // e: equal to BN
-            char rs;
+            char Result;
             if (this.Sign == BN.Sign)
             {
                 if (this.Num.Length < BN.Num.Length)
-                    rs = 'l';
+                    Result = 'l';
                 else if (this.Num.Length > BN.Num.Length)
-                    rs = 'g';
+                    Result = 'g';
                 else
                 {
                     int b = this.Num.CompareTo(BN.Num);
                     if (b == 0)
-                        rs = 'e';
+                        Result = 'e';
                     else if (b == 1)
-                        rs = 'g';
+                        Result = 'g';
                     else
-                        rs = 'l';
+                        Result = 'l';
                 }
                 if (this.Sign == '-')
                 {
-                    if (rs == 'g')
-                        rs = 'l';
-                    else if (rs == 'l')
-                        rs = 'g';
+                    if (Result == 'g')
+                        Result = 'l';
+                    else if (Result == 'l')
+                        Result = 'g';
                 }
             }
             else
             {
                 if (this.Sign == '+')
-                    rs = 'g';
+                    Result = 'g';
                 else
-                    rs = 'l';
+                    Result = 'l';
             }
-            return rs;
+            return Result;
         }
         public List<Int64> CutNum(int n)
         {
@@ -202,13 +202,11 @@ namespace BigNum
             string s = "";
             lst.Insert(0, 0);
             int len = lst.Count;
-            Int64 x = 0;
             for (int i = 0; i < len; i++)
                 lst[i] *= n;
             for (int i = len - 1; i >= 0; i--)
             {
-                x = lst[i] / 100000000;
-                if (i > 0) lst[i - 1] += x;
+                if (i > 0) lst[i - 1] += lst[i] / 100000000;
                 lst[i] %= 100000000;
             }
             for (int i = 0; i < len; i++)
@@ -221,7 +219,7 @@ namespace BigNum
                 Swap(ref BN1, ref BN2);
             List<Int64> lstBN2 = BN2.CutNum(8);
             List<BigNum> lstBN = new List<BigNum>();
-            BigNum Rs = new BigNum("0");
+            BigNum Result = new BigNum("0");
             int len = lstBN2.Count;
             for (int i = 0; i < len; i++)
                 lstBN.Add(Multiplication_BN_Int64(BN1, lstBN2[i]));
@@ -229,16 +227,15 @@ namespace BigNum
             for (int i = 0; i < len; i++)
             {
                 BigNum temp = new BigNum(Add_num_0(lstBN[i].Num, "end", 8 * (len - i - 1)));
-                //MessageBox.Show(temp.Show());
-                Rs = Addition(Rs, temp);
+                    Result = Addition(Result, temp);
             }
-            Rs.Num = Rs.Num.TrimStart('0');
-            return Rs;
+            Result.Num = Result.Num.TrimStart('0');
+            return Result;
         }
-        public BigNum Division(BigNum BN1, BigNum BN2)
+        public BigNum Division(BigNum BN1, BigNum BN2, int Remainder)
         {
             List<BigNum> lstBN_Bin = new List<BigNum>();
-            BigNum Rs = new BigNum("0");
+            BigNum Result = new BigNum("0");
             string s = "";
             int lenBN1 = BN1.Num.Length;
             int lenBN2 = BN2.Num.Length;
@@ -246,40 +243,53 @@ namespace BigNum
             lstBN_Bin.Add(new BigNum("0"));
             for (int i = 0; i < 10; i++)
                 lstBN_Bin.Add(Addition(lstBN_Bin[i], BN2));
+            lenBN2--;
             for (int i = 0; i < lenBN2; i++)
                 s += BN1.Num[i];
             BigNum temp = new BigNum(s);
             for (int i = lenBN2; i < lenBN1; i++)
             {
+                temp.Num += BN1.Num[i];
+                temp.Num = temp.Num.TrimStart('0');
                 k = Search_Bin(ref temp, ref lstBN_Bin);
                 if (k != 0)
                     temp = Subtraction(temp, lstBN_Bin[k]);
-                temp.Num = temp.Num.TrimStart('0');
-                temp.Num += BN1.Num[i];
-                Rs.Num += k;
+                Result.Num += k;
             }
-            Rs.Num+= Search_Bin(ref temp, ref lstBN_Bin);
-            return Rs;
+            //Result.Num += Search_Bin(ref temp, ref lstBN_Bin);
+            if (Remainder == 1)
+                return temp;
+            else return Result;
         }
         public int Search_Bin(ref BigNum BN, ref List<BigNum> lstBN_Bin)
         {
-            //int q = 0, p = 10, k = 0;
-            //char c;
+            int q = 0, p = 10, k = 0;
+            while (p - q != 1)
+            {
+                k = (q + p) / 2;
+                if (BN.Compare(lstBN_Bin[k]) == 'l')
+                    p = k;
+                else
+                    q = k;
+            }
+            return q;
+        }
+        public BigNum Pow(BigNum BN1, Int64 BN2)
+        {
+            int k = (int)Math.Log2(BN2);
+            List<BigNum> Pow2n = new List<BigNum>();
+            BigNum Result = new BigNum("1");
+            Pow2n.Add(BN1);
+            for (int i = 0; i < k; i++)
+                Pow2n.Add(Multiplication_BN_BN(Pow2n[i], Pow2n[i]));
+            while (BN2 > 0)
+            {
+                k = (int)Math.Log2(BN2);
+                Result = Multiplication_BN_BN(Result, Pow2n[k]);
+                BN2 -= (int)Math.Pow(2,k);
 
-            //while (p - q != 1)
-            //{
-            //    k = (q + p) / 2;
-            //    c = BN.Compare(lstBN_Bin[k]);
-            //    if (c == 'g' || c == 'e')
-            //        q = k;
-            //    else
-            //        p = k;
-            //}
-            //return k-1;
-            for (int i = 1; i < 10; i++)
-                if (BN.Compare(lstBN_Bin[i]) == 'l')
-                    return i - 1;
-            return 9;
+            }
+            return Result;
         }
     }
 }
