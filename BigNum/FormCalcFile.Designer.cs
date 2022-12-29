@@ -28,34 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_SelectFile = new System.Windows.Forms.Button();
+            this.btnSelectFile = new System.Windows.Forms.Button();
+            this.tbPath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCalcFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_SelectFile
+            // btnSelectFile
             // 
-            this.btn_SelectFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_SelectFile.Location = new System.Drawing.Point(118, 51);
-            this.btn_SelectFile.Name = "btn_SelectFile";
-            this.btn_SelectFile.Size = new System.Drawing.Size(104, 34);
-            this.btn_SelectFile.TabIndex = 7;
-            this.btn_SelectFile.Text = "Chọn file";
-            this.btn_SelectFile.UseVisualStyleBackColor = true;
-            this.btn_SelectFile.Click += new System.EventHandler(this.btn_SelectFile_Click);
+            this.btnSelectFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSelectFile.Location = new System.Drawing.Point(173, 68);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(104, 34);
+            this.btnSelectFile.TabIndex = 7;
+            this.btnSelectFile.Text = "Chọn file";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btn_SelectFile_Click);
+            // 
+            // tbPath
+            // 
+            this.tbPath.Location = new System.Drawing.Point(123, 29);
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(444, 23);
+            this.tbPath.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(22, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Đường dẫn:";
+            // 
+            // btnCalcFile
+            // 
+            this.btnCalcFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCalcFile.Location = new System.Drawing.Point(323, 68);
+            this.btnCalcFile.Name = "btnCalcFile";
+            this.btnCalcFile.Size = new System.Drawing.Size(104, 34);
+            this.btnCalcFile.TabIndex = 7;
+            this.btnCalcFile.Text = "Xử lý";
+            this.btnCalcFile.UseVisualStyleBackColor = true;
+            this.btnCalcFile.Click += new System.EventHandler(this.btnCalcFile_Click);
             // 
             // FormCalcFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 215);
-            this.Controls.Add(this.btn_SelectFile);
+            this.ClientSize = new System.Drawing.Size(592, 113);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbPath);
+            this.Controls.Add(this.btnCalcFile);
+            this.Controls.Add(this.btnSelectFile);
             this.Name = "FormCalcFile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCalcFile";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Button btn_SelectFile;
+        private Button btnSelectFile;
+        private TextBox tbPath;
+        private Label label1;
+        private Button btnCalcFile;
     }
 }

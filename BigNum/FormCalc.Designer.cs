@@ -122,7 +122,6 @@
             this.cbbSelectFunction.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbbSelectFunction.Size = new System.Drawing.Size(181, 29);
             this.cbbSelectFunction.TabIndex = 7;
-            this.cbbSelectFunction.Text = "So sánh";
             // 
             // label4
             // 
@@ -157,6 +156,7 @@
             this.btnCalcFile.TabIndex = 6;
             this.btnCalcFile.Text = "Xử lý file";
             this.btnCalcFile.UseVisualStyleBackColor = true;
+            this.btnCalcFile.Click += new System.EventHandler(this.btnCalcFile_Click);
             // 
             // FormCalc
             // 
@@ -176,6 +176,7 @@
             this.Name = "FormCalc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BigNum";
+            this.Load += new System.EventHandler(this.FormCalc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

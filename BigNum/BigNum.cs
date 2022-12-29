@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigNum
 {
-    internal class BigNum
+    class BigNum
     {
         private char sign;
         private string num;
@@ -291,5 +291,137 @@ namespace BigNum
             }
             return Result;
         }
+        public string Calc(BigNum BN1, BigNum BN2, string selectFunc)
+        {
+            if (selectFunc == "So sánh")
+            {
+                if (BN1 < BN2)
+                    return "Số thứ nhất bé hơn số thứ hai";
+                else if (BN1 == BN2)
+                    return "Số thứ nhất bằng số thứ hai";
+                else
+                    return "Số thứ nhất lớn hơn số thứ hai";
+            }
+            else
+            {
+                BigNum Rs = new BigNum("0");
+                if (selectFunc == "Cộng" || selectFunc == "+")
+                {
+                    if (BN1.Sign == BN2.Sign)
+                        Rs = BN1 + BN2;
+                    else
+                    {
+                        Rs = BN1 - BN2;
+                        if (BN1.Abs() < BN2.Abs())
+                            Rs.Sign = BN2.Sign;
+                    }
+                    Rs.Sign = BN1.Sign;
+                }
+                else if (selectFunc == "Trừ" || selectFunc == "-")
+                {
+                    if (BN1.Sign != BN2.Sign)
+                        Rs = BN1 + BN2;
+                    else
+                    {
+                        Rs = BN1 - BN2;
+                        if (BN1.Abs() < (BN2.Abs()))
+                            Rs.Sign = BN1.Opposite().Sign;
+                    }
+                    Rs.Sign = BN1.Sign;
+                }
+                else if (selectFunc == "Lũy thừa" || selectFunc == "^")
+                {
+                    Int64 BN = Int64.Parse(BN2.Num);
+                    Rs.Num = "1";
+                    Rs = BN1 ^ BN;
+                    Rs.Sign = BN1.Sign;
+                }
+                else
+                {
+                    if (selectFunc == "Nhân" || selectFunc == "*")
+                        Rs = BN1.Abs() * BN2.Abs();
+                    else if (selectFunc == "Chia lấy phần nguyên" || selectFunc == "/")
+                        Rs = BN1.Abs() / BN2.Abs();
+                    else if (selectFunc == "Chia lấy phần dư" || selectFunc == "%")
+                        Rs = BN1.Abs() % BN2.Abs();
+
+                    if (BN1.Sign != BN2.Sign)
+                        Rs.Sign = '-';
+                    else
+                        Rs.Sign = '+';
+                }
+                return Rs.Show();
+            }
+        }
+        #region nạp chồng toán tử phép so sánh
+        public static bool operator >(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'g')
+                return true;
+            return false;
+        }
+        public static bool operator <(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'l')
+                return true;
+            return false;
+        }
+        public static bool operator ==(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'e')
+                return true;
+            return false;
+        }
+        public static bool operator !=(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'e')
+                return false;
+            return true;
+        }
+        public static bool operator >=(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'l')
+                return false;
+            return true;
+        }
+        public static bool operator <=(BigNum BN1, BigNum BN2)
+        {
+            if (BN1.Compare(BN2) == 'g')
+                return false;
+            return true;
+        }
+        #endregion
+        #region nạp chồng toán tử phép tính
+        public static BigNum operator +(BigNum BN1, BigNum BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Addition(BN1, BN2);
+        }
+        public static BigNum operator -(BigNum BN1, BigNum BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Subtraction(BN1, BN2);
+        }
+        public static BigNum operator *(BigNum BN1, BigNum BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Multiplication_BN_BN(BN1, BN2);
+        }
+        public static BigNum operator /(BigNum BN1, BigNum BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Division(BN1, BN2, 0);
+        }
+        public static BigNum operator %(BigNum BN1, BigNum BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Division(BN1, BN2, 1);
+        }
+        public static BigNum operator ^(BigNum BN1, Int64 BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Pow(BN1, BN2);
+        }
+        #endregion
     }
 }
