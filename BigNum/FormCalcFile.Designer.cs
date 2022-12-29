@@ -82,6 +82,8 @@
             this.Controls.Add(this.tbPath);
             this.Controls.Add(this.btnCalcFile);
             this.Controls.Add(this.btnSelectFile);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCalcFile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCalcFile";
