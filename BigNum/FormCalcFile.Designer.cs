@@ -82,11 +82,12 @@
             this.Controls.Add(this.tbPath);
             this.Controls.Add(this.btnCalcFile);
             this.Controls.Add(this.btnSelectFile);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCalcFile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCalcFile";
+            this.Text = "Xử lý File";
             this.ResumeLayout(false);
             this.PerformLayout();
 

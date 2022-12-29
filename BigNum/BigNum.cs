@@ -32,7 +32,7 @@ namespace BigNum
                 s = "0";
             return s;
         }
-        public BigNum Opposite()
+        private BigNum Opposite()
         {
             BigNum Result = new BigNum(this.Num);
             if (Sign == '-')
@@ -41,14 +41,14 @@ namespace BigNum
                 Result.sign = '-';
             return Result;
         }
-        public BigNum Abs()
+        private BigNum Abs()
         {
             BigNum Result = new BigNum(this.Num);
             if (Result.Sign == '-')
                 Result.Sign = '+';
             return Result;
         }
-        public char Compare(BigNum BN)
+        private char Compare(BigNum BN)
 
         {
             // l: less than BN
@@ -88,7 +88,7 @@ namespace BigNum
             }
             return Result;
         }
-        public List<Int64> CutNum(int n)
+        private List<Int64> CutNum(int n)
         {
             List<Int64> cuted = new List<Int64>();
             int len = num.Length;
@@ -114,7 +114,7 @@ namespace BigNum
             return cuted;
         }
         // Thêm số 0 vào location, trả về đúng n ký tự
-        public string Add_num_0(int n, string s, string location)
+        private string Add_num_0(int n, string s, string location)
         {
             int len = s.Length;
             if (location == "begin")
@@ -126,7 +126,7 @@ namespace BigNum
             return s;
         }
         // Thêm n số 0 vào location
-        public string Add_num_0(string s, string location, int n)
+        private string Add_num_0(string s, string location, int n)
         {
             if (location == "begin")
                 for (int i = 0; i < n; i++)
@@ -136,14 +136,14 @@ namespace BigNum
                     s += '0';
             return s;
         }
-        public void Swap(ref BigNum BN1, ref BigNum BN2)
+        private void Swap(ref BigNum BN1, ref BigNum BN2)
         {
             BigNum temp = BN1;
             BN1 = BN2;
             BN2 = temp;
             return;
         }
-        public BigNum Addition(BigNum BN1, BigNum BN2)
+        private BigNum Addition(BigNum BN1, BigNum BN2)
         {
             if (BN1.Compare(BN2) == 'l')
                 Swap(ref BN1, ref BN2);
@@ -168,7 +168,7 @@ namespace BigNum
                 s += Add_num_0(15, lstrs[i].ToString(), "begin");
             return new BigNum(s.TrimStart('0'));
         }
-        public BigNum Subtraction(BigNum BN1, BigNum BN2)
+        private BigNum Subtraction(BigNum BN1, BigNum BN2)
         {
             if (BN1.Compare(BN2) == 'e')
                 return new BigNum("0");
@@ -196,7 +196,7 @@ namespace BigNum
                 s += Add_num_0(15, lstrs[i].ToString(), "begin");
             return new BigNum(s.TrimStart('0'));
         }
-        public BigNum Multiplication_BN_Int64(BigNum BN, Int64 n)
+        private BigNum Multiplication_BN_Int64(BigNum BN, Int64 n)
         {
             List<Int64> lst = BN.CutNum(8);
             string s = "";
@@ -213,7 +213,7 @@ namespace BigNum
                 s += Add_num_0(8, lst[i].ToString(), "begin");
             return new BigNum(s.TrimStart('0'));
         }
-        public BigNum Multiplication_BN_BN(BigNum BN1, BigNum BN2)
+        private BigNum Multiplication_BN_BN(BigNum BN1, BigNum BN2)
         {
             if (BN1.Compare(BN2) == 'l')
                 Swap(ref BN1, ref BN2);
@@ -227,12 +227,12 @@ namespace BigNum
             for (int i = 0; i < len; i++)
             {
                 BigNum temp = new BigNum(Add_num_0(lstBN[i].Num, "end", 8 * (len - i - 1)));
-                    Result = Addition(Result, temp);
+                Result = Addition(Result, temp);
             }
             Result.Num = Result.Num.TrimStart('0');
             return Result;
         }
-        public BigNum Division(BigNum BN1, BigNum BN2, int Remainder)
+        private BigNum Division(BigNum BN1, BigNum BN2, int Remainder)
         {
             List<BigNum> lstBN_Bin = new List<BigNum>();
             BigNum Result = new BigNum("0");
@@ -261,7 +261,7 @@ namespace BigNum
                 return temp;
             else return Result;
         }
-        public int Search_Bin(ref BigNum BN, ref List<BigNum> lstBN_Bin)
+        private int Search_Bin(ref BigNum BN, ref List<BigNum> lstBN_Bin)
         {
             int q = 0, p = 10, k = 0;
             while (p - q != 1)
@@ -274,7 +274,7 @@ namespace BigNum
             }
             return q;
         }
-        public BigNum Pow(BigNum BN1, Int64 BN2)
+        private BigNum Pow(BigNum BN1, Int64 BN2)
         {
             int k = (int)Math.Log2(BN2);
             List<BigNum> Pow2n = new List<BigNum>();
@@ -286,10 +286,29 @@ namespace BigNum
             {
                 k = (int)Math.Log2(BN2);
                 Result = Multiplication_BN_BN(Result, Pow2n[k]);
-                BN2 -= (int)Math.Pow(2,k);
+                BN2 -= (int)Math.Pow(2, k);
 
             }
             return Result;
+        }
+        private BigNum GCD(BigNum BN1, BigNum BN2)
+        {
+            BigNum tmp;
+            if (BN1.Abs() == BN2.Abs())
+                return BN1;
+            if (BN1.Abs() < BN2.Abs())
+                Swap(ref BN1, ref BN2);
+            while (BN2.Num != "0")
+            {
+                tmp = BN1 % BN2;
+                BN1 = BN2;
+                BN2 = tmp;
+            }
+            return BN1;
+        }
+        private BigNum LCM(BigNum BN1, BigNum BN2)
+        {
+            return (BN1 * BN2) / GCD(BN1, BN2);
         }
         public string Calc(BigNum BN1, BigNum BN2, string selectFunc)
         {
@@ -320,14 +339,18 @@ namespace BigNum
                 else if (selectFunc == "Trừ" || selectFunc == "-")
                 {
                     if (BN1.Sign != BN2.Sign)
+                    {
                         Rs = BN1 + BN2;
+                        Rs.Sign = BN1.Sign;
+                    }
                     else
                     {
                         Rs = BN1 - BN2;
                         if (BN1.Abs() < (BN2.Abs()))
                             Rs.Sign = BN1.Opposite().Sign;
+                        else
+                            Rs.Sign = BN1.Sign;
                     }
-                    Rs.Sign = BN1.Sign;
                 }
                 else if (selectFunc == "Lũy thừa" || selectFunc == "^")
                 {
@@ -336,6 +359,17 @@ namespace BigNum
                     Rs = BN1 ^ BN;
                     Rs.Sign = BN1.Sign;
                 }
+                else if (selectFunc == "Ước chung lớn nhất")
+                {
+                    Rs = GCD(BN1, BN2);
+                    Rs.Sign = '+';
+                }
+                else if (selectFunc == "Bội chung nhỏ nhất")
+                {
+                    Rs = LCM(BN1, BN2);
+                    Rs.Sign = '+';
+                }
+                // Nhân, Chia
                 else
                 {
                     if (selectFunc == "Nhân" || selectFunc == "*")
@@ -406,6 +440,11 @@ namespace BigNum
         {
             BigNum Result = new BigNum("0");
             return Result.Multiplication_BN_BN(BN1, BN2);
+        }
+        public static BigNum operator *(BigNum BN1, Int64 BN2)
+        {
+            BigNum Result = new BigNum("0");
+            return Result.Multiplication_BN_Int64(BN1, BN2);
         }
         public static BigNum operator /(BigNum BN1, BigNum BN2)
         {
