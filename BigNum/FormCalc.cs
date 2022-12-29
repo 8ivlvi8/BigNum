@@ -49,7 +49,7 @@
         private void btnCalcFile_Click(object sender, EventArgs e)
         {
             Form frm = new FormCalcFile();
-            frm.Show();
+            frm.ShowDialog(this);
         }
         private void FormCalc_Load(object sender, EventArgs e)
         {

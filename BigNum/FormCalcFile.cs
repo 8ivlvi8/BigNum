@@ -64,7 +64,7 @@ namespace BigNum
 
                 Form frm = new FormProcess();
                 frm.Show();
-                Task.Delay(50).Wait();
+                Task.Delay(100).Wait();
 
                 len_lst /= 3;
                 for (int i = 0; i < len_lst; i++)
@@ -79,7 +79,8 @@ namespace BigNum
                 frm.Close();
                 sw.Close();
                 f.Close();
-                MessageBox.Show("Xử lý xong!");
+                MessageBox.Show("Xử lý xong!\n" +
+                    "Kết quả được lưu ở \""+output+"\"");
             }
             catch
             {
