@@ -37,43 +37,39 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCalc = new System.Windows.Forms.Button();
             this.btnCalcFile = new System.Windows.Forms.Button();
-            this.btnProblem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbBN1
             // 
             this.tbBN1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbBN1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbBN1.Location = new System.Drawing.Point(112, 12);
             this.tbBN1.Multiline = true;
             this.tbBN1.Name = "tbBN1";
             this.tbBN1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbBN1.Size = new System.Drawing.Size(424, 105);
+            this.tbBN1.Size = new System.Drawing.Size(415, 105);
             this.tbBN1.TabIndex = 0;
             // 
             // tbBN2
             // 
             this.tbBN2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbBN2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbBN2.Location = new System.Drawing.Point(112, 123);
             this.tbBN2.Multiline = true;
             this.tbBN2.Name = "tbBN2";
             this.tbBN2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbBN2.Size = new System.Drawing.Size(424, 105);
+            this.tbBN2.Size = new System.Drawing.Size(415, 105);
             this.tbBN2.TabIndex = 0;
             // 
             // tbRs
             // 
             this.tbRs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbRs.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbRs.Location = new System.Drawing.Point(112, 234);
             this.tbRs.Multiline = true;
             this.tbRs.Name = "tbRs";
             this.tbRs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbRs.Size = new System.Drawing.Size(424, 105);
+            this.tbRs.Size = new System.Drawing.Size(415, 105);
             this.tbRs.TabIndex = 0;
             // 
             // label1
@@ -119,10 +115,8 @@
             "Nhân",
             "Chia lấy phần nguyên",
             "Chia lấy phần dư",
-            "Lũy thừa",
-            "Ước chung lớn nhất",
-            "Bội chung nhỏ nhất"});
-            this.cbbSelectFunction.Location = new System.Drawing.Point(544, 98);
+            "Lũy thừa"});
+            this.cbbSelectFunction.Location = new System.Drawing.Point(542, 116);
             this.cbbSelectFunction.Margin = new System.Windows.Forms.Padding(5);
             this.cbbSelectFunction.Name = "cbbSelectFunction";
             this.cbbSelectFunction.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -136,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(572, 73);
+            this.label4.Location = new System.Drawing.Point(570, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 20);
             this.label4.TabIndex = 8;
@@ -145,7 +139,7 @@
             // btnCalc
             // 
             this.btnCalc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCalc.Location = new System.Drawing.Point(572, 132);
+            this.btnCalc.Location = new System.Drawing.Point(570, 150);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(125, 35);
             this.btnCalc.TabIndex = 9;
@@ -156,7 +150,7 @@
             // btnCalcFile
             // 
             this.btnCalcFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCalcFile.Location = new System.Drawing.Point(572, 258);
+            this.btnCalcFile.Location = new System.Drawing.Point(570, 191);
             this.btnCalcFile.Name = "btnCalcFile";
             this.btnCalcFile.Size = new System.Drawing.Size(125, 37);
             this.btnCalcFile.TabIndex = 6;
@@ -164,26 +158,14 @@
             this.btnCalcFile.UseVisualStyleBackColor = true;
             this.btnCalcFile.Click += new System.EventHandler(this.btnCalcFile_Click);
             // 
-            // btnProblem
-            // 
-            this.btnProblem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnProblem.Location = new System.Drawing.Point(572, 209);
-            this.btnProblem.Name = "btnProblem";
-            this.btnProblem.Size = new System.Drawing.Size(125, 37);
-            this.btnProblem.TabIndex = 6;
-            this.btnProblem.Text = "Bài toán";
-            this.btnProblem.UseVisualStyleBackColor = true;
-            this.btnProblem.Click += new System.EventHandler(this.btnProblem_Click);
-            // 
             // FormCalc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 351);
+            this.ClientSize = new System.Drawing.Size(739, 355);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbbSelectFunction);
-            this.Controls.Add(this.btnProblem);
             this.Controls.Add(this.btnCalcFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -191,7 +173,6 @@
             this.Controls.Add(this.tbRs);
             this.Controls.Add(this.tbBN2);
             this.Controls.Add(this.tbBN1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormCalc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BigNum";
@@ -213,6 +194,5 @@
         private Label label4;
         private Button btnCalc;
         private Button btnCalcFile;
-        private Button btnProblem;
     }
 }
