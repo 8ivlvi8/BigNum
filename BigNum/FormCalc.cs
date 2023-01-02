@@ -55,5 +55,11 @@
         {
             cbbSelectFunction.Text = "So sánh";
         }
+
+        private void btnProblem_Click(object sender, EventArgs e)
+        {
+            Form frm = new FormProblem();
+            frm.ShowDialog(this);
+        }
     }
 }
