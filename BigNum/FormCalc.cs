@@ -1,4 +1,6 @@
-﻿namespace BigNum
+﻿using System.Diagnostics;
+
+namespace BigNum
 {
     public partial class FormCalc : Form
     {
@@ -38,6 +40,8 @@
         }
         private void btnCalc_Click(object sender, EventArgs e)
         {
+            Stopwatch swObj = new Stopwatch();
+            swObj.Start();
             if (check_tb() == false)
                 return;
             BigNum BN1 = new BigNum(tbBN1.Text);
@@ -45,6 +49,8 @@
             BigNum Result = new BigNum("0");
             string selectFunc = cbbSelectFunction.SelectedItem.ToString();
             tbRs.Text = Result.Calc(BN1, BN2, selectFunc);
+            swObj.Stop();
+            MessageBox.Show("Total:= " + swObj.ElapsedTicks);
         }
         private void btnCalcFile_Click(object sender, EventArgs e)
         {

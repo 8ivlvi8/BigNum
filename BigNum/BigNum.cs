@@ -375,9 +375,19 @@ namespace BigNum
                     if (selectFunc == "Nhân" || selectFunc == "*")
                         Rs = BN1.Abs() * BN2.Abs();
                     else if (selectFunc == "Chia lấy phần nguyên" || selectFunc == "/")
-                        Rs = BN1.Abs() / BN2.Abs();
+                    {
+                        if (BN1 < BN2)
+                            Rs.Num = "0";
+                        else
+                            Rs = BN1.Abs() / BN2.Abs();
+                    }
                     else if (selectFunc == "Chia lấy phần dư" || selectFunc == "%")
-                        Rs = BN1.Abs() % BN2.Abs();
+                    {
+                        if (BN1 < BN2)
+                            Rs = BN1;
+                        else
+                            Rs = BN1.Abs() % BN2.Abs();
+                    }
 
                     if (BN1.Sign != BN2.Sign)
                         Rs.Sign = '-';
