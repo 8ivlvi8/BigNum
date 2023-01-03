@@ -136,7 +136,7 @@ namespace BigNum
                     s += '0';
             return s;
         }
-        private void Swap(ref BigNum BN1, ref BigNum BN2)
+        public void Swap(ref BigNum BN1, ref BigNum BN2)
         {
             BigNum temp = BN1;
             BN1 = BN2;
@@ -327,14 +327,17 @@ namespace BigNum
                 if (selectFunc == "Cộng" || selectFunc == "+")
                 {
                     if (BN1.Sign == BN2.Sign)
+                    {
                         Rs = BN1 + BN2;
+                        Rs.Sign = BN1.Sign;
+
+                    }
                     else
                     {
                         Rs = BN1 - BN2;
                         if (BN1.Abs() < BN2.Abs())
                             Rs.Sign = BN2.Sign;
                     }
-                    Rs.Sign = BN1.Sign;
                 }
                 else if (selectFunc == "Trừ" || selectFunc == "-")
                 {
@@ -355,9 +358,13 @@ namespace BigNum
                 else if (selectFunc == "Lũy thừa" || selectFunc == "^")
                 {
                     Int64 BN = Int64.Parse(BN2.Num);
-                    Rs.Num = "1";
+                    Rs.Num = "0";
+                    if (BN2 < Rs) return "0";
                     Rs = BN1 ^ BN;
-                    Rs.Sign = BN1.Sign;
+                    if (BN1 < (new BigNum("0")))
+                        if (BN % 2 == 0)
+                            Rs.Sign = '+';
+                        else Rs.Sign = '-';
                 }
                 else if (selectFunc == "Ước chung lớn nhất")
                 {
@@ -376,14 +383,14 @@ namespace BigNum
                         Rs = BN1.Abs() * BN2.Abs();
                     else if (selectFunc == "Chia lấy phần nguyên" || selectFunc == "/")
                     {
-                        if (BN1 < BN2)
+                        if (BN1.Abs() < BN2.Abs())
                             Rs.Num = "0";
                         else
                             Rs = BN1.Abs() / BN2.Abs();
                     }
                     else if (selectFunc == "Chia lấy phần dư" || selectFunc == "%")
                     {
-                        if (BN1 < BN2)
+                        if (BN1.Abs() < BN2.Abs())
                             Rs = BN1;
                         else
                             Rs = BN1.Abs() % BN2.Abs();
