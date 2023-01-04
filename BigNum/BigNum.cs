@@ -32,60 +32,17 @@ namespace BigNum
                 s = "0";
             return s;
         }
-        private BigNum Opposite()
+        private char Opposite(BigNum BN)
         {
-            BigNum Result = new BigNum(this.Num);
-            if (Sign == '-')
-                Result.sign = '+';
-            else
-                Result.sign = '-';
-            return Result;
+            if (BN.Sign == '-')
+                return '+';
+            return '-';
         }
         private BigNum Abs()
         {
             BigNum Result = new BigNum(this.Num);
             if (Result.Sign == '-')
                 Result.Sign = '+';
-            return Result;
-        }
-        private char Compare(BigNum BN)
-
-        {
-            // l: less than BN
-            // g: greater than BN
-            // e: equal to BN
-            char Result;
-            if (this.Sign == BN.Sign)
-            {
-                if (this.Num.Length < BN.Num.Length)
-                    Result = 'l';
-                else if (this.Num.Length > BN.Num.Length)
-                    Result = 'g';
-                else
-                {
-                    int b = this.Num.CompareTo(BN.Num);
-                    if (b == 0)
-                        Result = 'e';
-                    else if (b == 1)
-                        Result = 'g';
-                    else
-                        Result = 'l';
-                }
-                if (this.Sign == '-')
-                {
-                    if (Result == 'g')
-                        Result = 'l';
-                    else if (Result == 'l')
-                        Result = 'g';
-                }
-            }
-            else
-            {
-                if (this.Sign == '+')
-                    Result = 'g';
-                else
-                    Result = 'l';
-            }
             return Result;
         }
         private List<Int64> CutNum(int n)
@@ -136,12 +93,52 @@ namespace BigNum
                     s += '0';
             return s;
         }
-        public void Swap(ref BigNum BN1, ref BigNum BN2)
+        private void Swap(ref BigNum BN1, ref BigNum BN2)
         {
             BigNum temp = BN1;
             BN1 = BN2;
             BN2 = temp;
             return;
+        }
+        private char Compare(BigNum BN)
+
+        {
+            // l: less than BN
+            // g: greater than BN
+            // e: equal to BN
+            char Result;
+            if (this.Sign == BN.Sign)
+            {
+                if (this.Num.Length < BN.Num.Length)
+                    Result = 'l';
+                else if (this.Num.Length > BN.Num.Length)
+                    Result = 'g';
+                else
+                {
+                    int b = this.Num.CompareTo(BN.Num);
+                    if (b == 0)
+                        Result = 'e';
+                    else if (b == 1)
+                        Result = 'g';
+                    else
+                        Result = 'l';
+                }
+                if (this.Sign == '-')
+                {
+                    if (Result == 'g')
+                        Result = 'l';
+                    else if (Result == 'l')
+                        Result = 'g';
+                }
+            }
+            else
+            {
+                if (this.Sign == '+')
+                    Result = 'g';
+                else
+                    Result = 'l';
+            }
+            return Result;
         }
         private BigNum Addition(BigNum BN1, BigNum BN2)
         {
@@ -256,7 +253,6 @@ namespace BigNum
                     temp = Subtraction(temp, lstBN_Bin[k]);
                 Result.Num += k;
             }
-            //Result.Num += Search_Bin(ref temp, ref lstBN_Bin);
             if (Remainder == 1)
                 return temp;
             else return Result;
@@ -350,7 +346,7 @@ namespace BigNum
                     {
                         Rs = BN1 - BN2;
                         if (BN1.Abs() < (BN2.Abs()))
-                            Rs.Sign = BN1.Opposite().Sign;
+                            Rs.Sign = Opposite(BN1);
                         else
                             Rs.Sign = BN1.Sign;
                     }

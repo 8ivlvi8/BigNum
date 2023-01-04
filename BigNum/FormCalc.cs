@@ -13,20 +13,20 @@ namespace BigNum
             int n = s.Length;
             if (s.Length < 1)
                 return false;
-            string smin = "", smax = "";
-            if (s[0] == '-')
+            else if (s.Length == 1)
+                if (s[0] >= '0' && s[0] <= '9')
+                    return true;
+                else
+                    return false;
+            else
             {
-                smin += '-';
-                smax += '-';
+                int i = 0;
+                if (s[0] == '-') i++;
+                for (; i < n; i++)
+                    if (!(s[i] >= '0' && s[i] <= '9'))
+                        return false;
             }
-            for (int i = 0; i < n; i++)
-            {
-                smin += '0';
-                smax += '9';
-            }
-            if ((s.CompareTo(smax) == -1 && s.CompareTo(smin) == 1) || s == smin || s == smax)
-                return true;
-            return false;
+            return true;
         }
         private bool check_tb()
         {

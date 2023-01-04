@@ -32,25 +32,33 @@ namespace BigNum
                 return;
             }
             BigNum Result = new BigNum("1");
-            if (rbtnFactorial.Checked)
+            if (rbtnFactorial.Checked || rbtnFibo.Checked)
             {
-                BigNum BN = new BigNum("1");
-                for (int i = 1; i <= n; i++)
-                    BN *= i;
-                Result = BN;
-            }
-            if (rbtnFibo.Checked)
-            {
-                BigNum a = new BigNum("1");
-                BigNum b = new BigNum("1");
-                BigNum c = new BigNum("1");
-                for (int i = 3; i <=n; i++)
+                Form frm = new FormProcess();
+                frm.Show();
+                Task.Delay(100).Wait();
+
+                if (rbtnFactorial.Checked)
                 {
-                    c = a + b;
-                    a = b;
-                    b = c;
+                    BigNum BN = new BigNum("1");
+                    for (int i = 1; i <= n; i++)
+                        BN *= i;
+                    Result = BN;
                 }
-                Result = c;
+                else
+                {
+                    BigNum a = new BigNum("1");
+                    BigNum b = new BigNum("1");
+                    BigNum c = new BigNum("1");
+                    for (int i = 3; i <= n; i++)
+                    {
+                        c = a + b;
+                        a = b;
+                        b = c;
+                    }
+                    Result = c;
+                }
+                frm.Close();
             }
             tbResult.Text = Result.Show();
         }
