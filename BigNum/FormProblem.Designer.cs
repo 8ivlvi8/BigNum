@@ -42,7 +42,7 @@
             // btnCalc
             // 
             this.btnCalc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCalc.Location = new System.Drawing.Point(603, 118);
+            this.btnCalc.Location = new System.Drawing.Point(611, 138);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(130, 39);
             this.btnCalc.TabIndex = 0;
@@ -77,7 +77,7 @@
             this.groupBox1.Controls.Add(this.rbtnFactorial);
             this.groupBox1.Controls.Add(this.rbtnFibo);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(550, 12);
+            this.groupBox1.Location = new System.Drawing.Point(558, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(232, 100);
             this.groupBox1.TabIndex = 2;
@@ -99,7 +99,7 @@
             this.tbResult.Multiline = true;
             this.tbResult.Name = "tbResult";
             this.tbResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbResult.Size = new System.Drawing.Size(430, 112);
+            this.tbResult.Size = new System.Drawing.Size(430, 170);
             this.tbResult.TabIndex = 3;
             // 
             // label1
@@ -116,7 +116,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(43, 92);
+            this.label2.Location = new System.Drawing.Point(43, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 4;
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 169);
+            this.ClientSize = new System.Drawing.Size(802, 230);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbResult);
@@ -134,9 +134,11 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCalc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormProblem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormProblem";
+            this.Text = "Bài toán";
             this.Load += new System.EventHandler(this.FormProblem_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

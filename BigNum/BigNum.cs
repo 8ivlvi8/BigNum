@@ -40,17 +40,14 @@ namespace BigNum
         }
         private BigNum Abs()
         {
-            BigNum Result = new BigNum(this.Num);
-            if (Result.Sign == '-')
-                Result.Sign = '+';
-            return Result;
+            return new BigNum(this.Num);
         }
         private List<Int64> CutNum(int n)
         {
             List<Int64> cuted = new List<Int64>();
-            int len = num.Length;
-            int k = len % n;
-            int t = len / n;
+            int temp = num.Length;
+            int k = temp % n;
+            int t = temp / n;
             string s = "";
             if (k != 0)
             {
@@ -61,38 +58,16 @@ namespace BigNum
             }
             for (int i = 0; i < t; i++)
             {
+                temp = i * n + k;
                 for (int j = 0; j < n; j++)
-                {
-                    s += num[i * n + j + k];
-                }
+                    s += num[temp + j];
                 cuted.Add(Int64.Parse(s));
                 s = "";
             }
             return cuted;
         }
-        // Thêm số 0 vào location, trả về đúng n ký tự
-        private string Add_num_0(int n, string s, string location)
-        {
-            int len = s.Length;
-            if (location == "begin")
-                for (int i = 0; i < n - len; i++)
-                    s = '0' + s;
-            if (location == "end")
-                for (int i = 0; i < n - len; i++)
-                    s += '0';
-            return s;
-        }
-        // Thêm n số 0 vào location
-        private string Add_num_0(string s, string location, int n)
-        {
-            if (location == "begin")
-                for (int i = 0; i < n; i++)
-                    s = '0' + s;
-            if (location == "end")
-                for (int i = 0; i < n; i++)
-                    s += '0';
-            return s;
-        }
+        // list phục vụ cho việc thêm số 0
+        private List<string> num0 = new List<string>() { "", "0", "00", "000", "0000", "00000", "000000", "0000000", "00000000", "000000000", "0000000000", "00000000000", "000000000000", "0000000000000", "00000000000000", "000000000000000", "0000000000000000", "00000000000000000", "000000000000000000", "0000000000000000000" };
         private void Swap(ref BigNum BN1, ref BigNum BN2)
         {
             BigNum temp = BN1;
@@ -161,8 +136,12 @@ namespace BigNum
                 lstrs.Insert(0, x);
             }
             string s = "";
+            string temp = "";
             for (int i = 0; i < lstrs.Count; i++)
-                s += Add_num_0(15, lstrs[i].ToString(), "begin");
+            {
+                temp = lstrs[i].ToString();
+                s += num0[15 - temp.Length] + temp;
+            }
             return new BigNum(s.TrimStart('0'));
         }
         private BigNum Subtraction(BigNum BN1, BigNum BN2)
@@ -189,8 +168,12 @@ namespace BigNum
                 lstrs.Insert(0, lstB1[i] - lstB2[i]);
             }
             string s = "";
+            string temp = "";
             for (int i = 0; i < lstrs.Count; i++)
-                s += Add_num_0(15, lstrs[i].ToString(), "begin");
+            {
+                temp = lstrs[i].ToString();
+                s += num0[15 - temp.Length] + temp;
+            }
             return new BigNum(s.TrimStart('0'));
         }
         private BigNum Multiplication_BN_Int64(BigNum BN, Int64 n)
@@ -206,8 +189,12 @@ namespace BigNum
                 if (i > 0) lst[i - 1] += lst[i] / 100000000;
                 lst[i] %= 100000000;
             }
+            string temp = "";
             for (int i = 0; i < len; i++)
-                s += Add_num_0(8, lst[i].ToString(), "begin");
+            {
+                temp = lst[i].ToString();
+                s += num0[8 - temp.Length] + temp;
+            }
             return new BigNum(s.TrimStart('0'));
         }
         private BigNum Multiplication_BN_BN(BigNum BN1, BigNum BN2)
@@ -221,10 +208,11 @@ namespace BigNum
             for (int i = 0; i < len; i++)
                 lstBN.Add(Multiplication_BN_Int64(BN1, lstBN2[i]));
             len = lstBN.Count;
-            for (int i = 0; i < len; i++)
+            string num00 = "";
+            for (int i = len - 1; i >= 0; i--)
             {
-                BigNum temp = new BigNum(Add_num_0(lstBN[i].Num, "end", 8 * (len - i - 1)));
-                Result = Addition(Result, temp);
+                Result = Addition(Result, new BigNum(lstBN[i].Num + num00));
+                num00 += num0[8];
             }
             Result.Num = Result.Num.TrimStart('0');
             return Result;
@@ -333,6 +321,8 @@ namespace BigNum
                         Rs = BN1 - BN2;
                         if (BN1.Abs() < BN2.Abs())
                             Rs.Sign = BN2.Sign;
+                        else
+                            Rs.Sign = BN1.Sign;
                     }
                 }
                 else if (selectFunc == "Trừ" || selectFunc == "-")
