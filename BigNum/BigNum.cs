@@ -117,7 +117,7 @@ namespace BigNum
         }
         private BigNum Addition(BigNum BN1, BigNum BN2)
         {
-            if (BN1.Compare(BN2) == 'l')
+            if (BN1.Abs() < BN2.Abs())
                 Swap(ref BN1, ref BN2);
             List<Int64> lstB1 = BN1.CutNum(15);
             List<Int64> lstB2 = BN2.CutNum(15);
@@ -146,9 +146,9 @@ namespace BigNum
         }
         private BigNum Subtraction(BigNum BN1, BigNum BN2)
         {
-            if (BN1.Compare(BN2) == 'e')
+            if (BN1 == BN2)
                 return new BigNum("0");
-            else if (BN1.Abs().Compare(BN2.Abs()) == 'l')
+            else if (BN1.Abs() < BN2.Abs())
                 Swap(ref BN1, ref BN2);
             List<Int64> lstB1 = BN1.CutNum(15);
             List<Int64> lstB2 = BN2.CutNum(15);
@@ -199,7 +199,7 @@ namespace BigNum
         }
         private BigNum Multiplication_BN_BN(BigNum BN1, BigNum BN2)
         {
-            if (BN1.Compare(BN2) == 'l')
+            if (BN1.Abs() < BN2.Abs())
                 Swap(ref BN1, ref BN2);
             List<Int64> lstBN2 = BN2.CutNum(8);
             List<BigNum> lstBN = new List<BigNum>();
@@ -271,7 +271,6 @@ namespace BigNum
                 k = (int)Math.Log2(BN2);
                 Result = Multiplication_BN_BN(Result, Pow2n[k]);
                 BN2 -= (int)Math.Pow(2, k);
-
             }
             return Result;
         }

@@ -46,7 +46,13 @@ namespace BigNum
             BigNum BN2 = new BigNum(tbBN2.Text);
             BigNum Result = new BigNum("0");
             string selectFunc = cbbSelectFunction.SelectedItem.ToString();
+            /*Form frm = new FormProcess();
+            frm.Show();
+            Task.Delay(100).Wait();
+
+            frm.Close();*/
             tbRs.Text = Result.Calc(BN1, BN2, selectFunc);
+
         }
         private void btnCalcFile_Click(object sender, EventArgs e)
         {

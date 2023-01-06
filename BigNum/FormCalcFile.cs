@@ -32,7 +32,7 @@ namespace BigNum
         {
             try
             {
-
+                //tạo đường dẫn cho output
                 string input = tbPath.Text;
                 int k = 0;
                 for (int i = 0; i < input.Length; i++)
@@ -42,16 +42,17 @@ namespace BigNum
                     output += input[i];
                 output += "\\Result.txt";
 
+                //đọc file từ input
                 FileStream f = new FileStream(input, FileMode.Open, FileAccess.Read);
                 StreamReader sr = new StreamReader(f, Encoding.UTF8);
                 string line;
                 List<string> lststr = new List<string>();
-                // doc cac dong cho toi cuoi file
                 while ((line = sr.ReadLine()) != null)
                     lststr.Add(line);
                 sr.Close();
                 f.Close();
 
+                //kiểm tra số lượng dòng dữ liệu đầu vào
                 int len_lst = lststr.Count;
                 if (len_lst % 3 != 0)
                 {
@@ -59,13 +60,16 @@ namespace BigNum
                     return;
                 }
 
+                //ghi dữ liệu ra output
                 f = new FileStream(output, FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(f, Encoding.UTF8);
 
+                //form đang xử lý
                 Form frm = new FormProcess();
                 frm.Show();
                 Task.Delay(100).Wait();
 
+                //
                 len_lst /= 3;
                 for (int i = 0; i < len_lst; i++)
                 {
